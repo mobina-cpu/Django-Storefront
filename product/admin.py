@@ -119,4 +119,3 @@ class ProductImageAdmin(admin.ModelAdmin):
     search_fields = ['product__name']
     list_filter = ['is_primary']
     ordering = ['product']
-
