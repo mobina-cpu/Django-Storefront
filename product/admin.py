@@ -17,7 +17,9 @@ class CategoryAdmin(admin.ModelAdmin):
         'name',
         'slug',
         'parent',
-        'is_active'
+        'is_active',
+        'created_at',
+        'updated_at'
     ]
     search_fields = [
         'name',
@@ -32,7 +34,9 @@ class CategoryAdmin(admin.ModelAdmin):
 class BrandAdmin(admin.ModelAdmin):
     list_display = [
         'name',
-        'slug'
+        'slug',
+        'created_at',
+        'updated_at'
     ]
     search_fields = [
         'name',
@@ -46,7 +50,9 @@ class BrandAdmin(admin.ModelAdmin):
 class AttributeAdmin(admin.ModelAdmin):
     list_display = [
         'title',
-        'code_name'
+        'code_name',
+        'created_at',
+        'updated_at'
     ]
     search_fields = [
         'title',
@@ -57,7 +63,11 @@ class AttributeAdmin(admin.ModelAdmin):
 
 @admin.register(AttributeGroup)
 class AttributeGroupAdmin(admin.ModelAdmin):
-    list_display = ['title']
+    list_display = [
+        'title',
+        'created_at',
+        'updated_at'
+    ]
     search_fields = ['title']
     filter_horizontal = ['attributes']
 
@@ -79,7 +89,9 @@ class ProductAdmin(admin.ModelAdmin):
         'category',
         'brand',
         'status',
-        'inventory'
+        'inventory',
+        'created_at',
+        'updated_at'
     ]
     search_fields = [
         'name',
@@ -100,7 +112,9 @@ class ProductAttributeAdmin(admin.ModelAdmin):
     list_display = [
         'product',
         'attribute',
-        'value'
+        'value',
+        'created_at',
+        'updated_at'
     ]
     search_fields = [
         'product__name',
@@ -114,7 +128,9 @@ class ProductImageAdmin(admin.ModelAdmin):
     list_display = [
         'product',
         'is_primary',
-        'image'
+        'image',
+        'created_at',
+        'updated_at'
     ]
     search_fields = ['product__name']
     list_filter = ['is_primary']
