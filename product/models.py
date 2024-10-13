@@ -1,7 +1,8 @@
 from django.db import models
+from storefront.abstract import AbstractModel
 
 
-class Category(models.Model):
+class Category(AbstractModel):
     name = models.CharField(
         max_length=255, unique=True
     )
@@ -22,7 +23,7 @@ class Category(models.Model):
         return self.name
 
 
-class Brand(models.Model):
+class Brand(AbstractModel):
     name = models.CharField(
         max_length=255, unique=True
     )
@@ -40,7 +41,7 @@ class Brand(models.Model):
         return self.name
 
 
-class Attribute(models.Model):
+class Attribute(AbstractModel):
     title = models.CharField(
         max_length=250
     )
@@ -52,7 +53,7 @@ class Attribute(models.Model):
         return self.title
 
 
-class AttributeGroup(models.Model):
+class AttributeGroup(AbstractModel):
     title = models.CharField(
         max_length=250
     )
@@ -64,7 +65,7 @@ class AttributeGroup(models.Model):
         return self.title
 
 
-class Product(models.Model):
+class Product(AbstractModel):
     STATUS_IS_ACTIVE = 1
     STATUS_IS_NOT_ACTIVE = 2
     STATUS_CHOICES = [
@@ -98,7 +99,7 @@ class Product(models.Model):
         return self.name
 
 
-class ProductAttribute(models.Model):
+class ProductAttribute(AbstractModel):
     product = models.ForeignKey(
         Product, on_delete=models.CASCADE, related_name='attributes'
     )
@@ -113,7 +114,7 @@ class ProductAttribute(models.Model):
         return f"{self.product.name} - {self.attribute.title}: {self.value}"
 
 
-class ProductImage(models.Model):
+class ProductImage(AbstractModel):
     product = models.ForeignKey(
         Product, on_delete=models.CASCADE, related_name='images'
     )
