@@ -32,6 +32,57 @@ class Customer(models.Model):
         max_length=100, blank=True, null=True
     )
 
-
     def __str__(self):
         return self.user.username
+
+
+class State(models.Model):
+    name = models.CharField(
+        max_length=255
+    )
+
+
+class City(models.Model):
+    name = models.CharField(
+        max_length=255
+    )
+    state = models.ForeignKey(
+        State, on_delete=models.CASCADE
+    )
+
+
+class Zone(models.Model):
+    name = models.CharField(
+        max_length=255
+    )
+    state = models.ForeignKey(
+        State, on_delete=models.CASCADE
+    )
+
+
+class Address(models.Model):
+    customer = models.ForeignKey(
+        Customer, on_delete=models.CASCADE
+    )
+    state = models.ForeignKey(
+        State, on_delete=models.CASCADE
+    )
+    city = models.ForeignKey(
+        City, on_delete=models.CASCADE
+    )
+    zone = models.ForeignKey(
+        Zone, on_delete=models.CASCADE
+    )
+    street = models.CharField(
+        max_length=255
+    )
+    address_line = models.CharField(
+        max_length=225
+    )
+    postal_code = models.CharField(
+        max_length=10
+    )
+    is_default = models.BooleanField(
+        default=True
+    )
+
