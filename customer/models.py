@@ -1,6 +1,12 @@
 from django.contrib.auth.models import User
 from django.db import models
 
+from address.models import (
+    City,
+    State,
+    Zone
+)
+
 
 class Customer(models.Model):
     WHOLESALER = 'wholesaler'
@@ -34,30 +40,6 @@ class Customer(models.Model):
 
     def __str__(self):
         return self.user.username
-
-
-class State(models.Model):
-    name = models.CharField(
-        max_length=255
-    )
-
-
-class City(models.Model):
-    name = models.CharField(
-        max_length=255
-    )
-    state = models.ForeignKey(
-        State, on_delete=models.CASCADE
-    )
-
-
-class Zone(models.Model):
-    name = models.CharField(
-        max_length=255
-    )
-    state = models.ForeignKey(
-        State, on_delete=models.CASCADE
-    )
 
 
 class Address(models.Model):
