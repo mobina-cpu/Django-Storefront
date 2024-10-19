@@ -10,7 +10,7 @@ class Category(AbstractModel):
         max_length=255, unique=True
     )
     parent = models.ForeignKey(
-        'self', null=True, blank=True, on_delete=models.SET_NULL
+        'self', null=True, blank=True, on_delete=models.SET_NULL, related_name='children'
     )
     description = models.TextField(
         max_length=500, null=True, blank=True
