@@ -34,7 +34,7 @@ class CustomerAdmin(admin.ModelAdmin):
 class AddressAdmin(admin.ModelAdmin):
     list_display = [
         'customer',
-        'state',
+        'Province',
         'city',
         'zone',
         'street',
@@ -42,13 +42,12 @@ class AddressAdmin(admin.ModelAdmin):
         'is_default'
     ]
     search_fields = [
-        'state__name',
+        'Province__name',
         'city__name',
-        'zone__name',
         'postal_code'
     ]
     list_filter = [
-        'state',
+        'Province',
         'city',
         'zone',
         'is_default'
@@ -58,7 +57,7 @@ class AddressAdmin(admin.ModelAdmin):
         (None, {
             'fields': [
                 'customer',
-                'state',
+                'Province',
                 'city',
                 'zone'
             ]

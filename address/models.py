@@ -1,6 +1,6 @@
 from django.db import models
 
-class State(models.Model):
+class Province(models.Model):
     name = models.CharField(
         max_length=255
     )
@@ -14,7 +14,7 @@ class City(models.Model):
         max_length=255
     )
     state = models.ForeignKey(
-        State, on_delete=models.CASCADE
+        Province, on_delete=models.CASCADE
     )
 
     def __str__(self):

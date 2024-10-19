@@ -1,12 +1,12 @@
 from django.contrib import admin
 from .models import (
-    State,
+    Province,
     City,
 )
 
 
-@admin.register(State)
-class StateAdmin(admin.ModelAdmin):
+@admin.register(Province)
+class ProvinceAdmin(admin.ModelAdmin):
     list_display = [
         'id',
         'name'
@@ -19,8 +19,6 @@ class CityAdmin(admin.ModelAdmin):
     list_display = [
         'id',
         'name',
-        'state'
     ]
     search_fields = ['name']
-    list_filter = ['state']
 

@@ -3,7 +3,7 @@ from django.db import models
 
 from address.models import (
     City,
-    State,
+    Province,
 )
 
 
@@ -45,8 +45,8 @@ class Address(models.Model):
     customer = models.ForeignKey(
         Customer, on_delete=models.CASCADE
     )
-    state = models.ForeignKey(
-        State, on_delete=models.CASCADE
+    Province = models.ForeignKey(
+        Province, on_delete=models.CASCADE
     )
     city = models.ForeignKey(
         City, on_delete=models.CASCADE
