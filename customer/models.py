@@ -4,7 +4,6 @@ from django.db import models
 from address.models import (
     City,
     State,
-    Zone
 )
 
 
@@ -52,8 +51,8 @@ class Address(models.Model):
     city = models.ForeignKey(
         City, on_delete=models.CASCADE
     )
-    zone = models.ForeignKey(
-        Zone, on_delete=models.CASCADE
+    zone = models.CharField(
+        max_length=255
     )
     street = models.CharField(
         max_length=255
