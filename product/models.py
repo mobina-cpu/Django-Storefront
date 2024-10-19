@@ -91,8 +91,8 @@ class Product(AbstractModel):
     brand = models.ForeignKey(
         Brand, null=True, blank=True, on_delete=models.SET_NULL
     )
-    attribute_group = models.ForeignKey(
-        AttributeGroup, on_delete=models.CASCADE
+    attribute_group = models.ManyToManyField(
+        AttributeGroup
     )
 
     def __str__(self):

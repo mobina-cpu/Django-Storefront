@@ -6,6 +6,11 @@ from .models import (
 )
 
 
+class AddressInline(admin.TabularInline):
+    model = Address
+    extra = 0
+
+
 @admin.register(Customer)
 class CustomerAdmin(admin.ModelAdmin):
     list_display = [
@@ -23,6 +28,7 @@ class CustomerAdmin(admin.ModelAdmin):
     ]
 
     list_filter = ['purchase_type']
+    inlines = [AddressInline]
 
     def get_readonly_fields(self, request, obj=None):
         if obj and obj.purchase_type == 'retail':
