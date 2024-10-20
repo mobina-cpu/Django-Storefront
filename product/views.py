@@ -18,7 +18,7 @@ class CategoryList(APIView):
         return Response(serializer.data)
 
 
-class ProductsByCategoryAPIView(APIView):
+class ProductsByCategory(APIView):
     serializer_class = ProductSerializer
 
     @staticmethod
