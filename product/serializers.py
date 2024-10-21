@@ -4,7 +4,8 @@ from .models import (
     Category,
     Product,
     ProductAttribute,
-    AttributeGroup
+    AttributeGroup,
+    Brand
 )
 
 
@@ -78,4 +79,16 @@ class ProductSerializer(serializers.ModelSerializer):
             'attributes',
             'images'
 
+        ]
+
+
+class BrandSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Brand
+        fields = [
+            'id',
+            'name',
+            'slug',
+            'description',
+            'logo'
         ]
