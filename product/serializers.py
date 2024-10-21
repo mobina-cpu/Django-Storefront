@@ -23,7 +23,8 @@ class CategorySerializer(serializers.ModelSerializer):
             'children'
         ]
 
-    def get_children(self, obj):
+    @staticmethod
+    def get_children(obj):
 
         children = obj.children.all()
         if children.exists():
