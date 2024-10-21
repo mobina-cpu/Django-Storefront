@@ -7,11 +7,13 @@ from rest_framework import (
 
 from .models import (
     Category,
-    Product
+    Product,
+    Brand
 )
 from .serializers import (
     CategorySerializer,
-    ProductSerializer
+    ProductSerializer,
+    BrandSerializer
 )
 from .pagination import DefaultPageNumberPagination
 
@@ -50,5 +52,20 @@ class CategoryProductsListView(generics.ListAPIView):
         return Product.objects.filter(category=category)
 
 
+class BrandListView(generics.ListAPIView):
+    queryset = Brand.objects.all()
+    serializer_class = BrandSerializer
+    pagination_class = DefaultPageNumberPagination
 
 
+class BrandProductsListView(generics.ListAPIView):
+    serializer_class = ProductSerializer
+
+    def get_queryset(self):
+        brand_id = self.kwargs['brand_id']
+        try:
+            brand = Brand.objects.get(id=brand_id)
+        except Brand.DoesNotExist:
+            raise NotFound(detail="Brand not found.")
+
+        return Product.objects.filter(brand=brand)
